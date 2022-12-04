@@ -16,10 +16,12 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 (macro Ψ [hl-family-name hl-family]
+  ;; Checks
   (assert-compile (sym? hl-family-name) "Require a hl-family-name string"
                   hl-family-name)
   (assert-compile (and (table? hl-family) (not (sequence? hl-family)))
                   "Require a hl-family list" hl-family)
+  ;; Build the list of highlight definitions
   (let [hl-code (icollect [hl-group color-description (pairs hl-family)]
                   `(print ,hl-group ,(. color-description :fg)))]
     ;; Returning a boolean is probably cheaper
