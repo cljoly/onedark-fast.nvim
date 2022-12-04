@@ -20,13 +20,13 @@
                   hl-family-name)
   (assert-compile (and (table? hl-family) (not (sequence? hl-family)))
                   "Require a hl-family list" hl-family)
-  (let [hl-code (list `do)]
-    (each [hl-group color-description (pairs hl-family)]
-      (table.insert hl-code `(print ,hl-group ,(. color-description :fg)))
-      (table.insert hl-code `true))
+  (let [hl-code (icollect [hl-group color-description (pairs hl-family)]
+                  `(print ,hl-group ,(. color-description :fg)))]
+    ;; Returning a boolean is probably cheaper
+    (table.insert hl-code true)
     `(fn ,hl-family-name
        []
-       ,hl-code)))
+       ,(unpack hl-code))))
 
 (Ψ common {:grp1 {:fg :red2 :bg :bg0}
             :grp2 {:fg :red3 :bg :bg0}
