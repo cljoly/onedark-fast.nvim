@@ -7,7 +7,7 @@ fmt: $(fnl_files)
 	fnlfmt --fix $<
 
 lua/%.lua: fnl/%.fnl lua/
-	fennel --raw-errors --compile $< > $@
+	fennel --raw-errors --globals-only vim,print --compile $< > $@
 
 lua/:
 	mkdir -p lua
