@@ -16,21 +16,28 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 (macro Ψ [hl-family-name hl-family]
-  ;; Checks
+  (local color-defs (require :color-definitions))
+  (local utils (require :utils))
+  ;; Basic checks
   (assert-compile (sym? hl-family-name) "Require a hl-family-name string"
                   hl-family-name)
   (assert-compile (and (table? hl-family) (not (sequence? hl-family)))
                   "Require a hl-family list" hl-family)
   ;; Build the list of highlight definitions
-  (let [hl-code (icollect [hl-group color-description (pairs hl-family)]
-                  `(print ,hl-group ,(. color-description :fg)))]
-    ;; Returning a boolean is probably cheaper
-    (table.insert hl-code true)
+  (let [code (icollect [hl-group hl-def (pairs hl-family)]
+               (do
+                 (each [_ hl-key (pairs [:fg :bg :sp])]
+                   (-?>> (. hl-def hl-key)
+                         (color-defs.find-color)
+                         (tset hl-def hl-key)))
+                 (utils.check-hl-def hl-def)
+                 `(vim.api.nvim_set_hl 0 ,hl-group ,hl-def)))]
+    (table.insert code true) ; Returning a boolean is probably cheaper
     `(fn ,hl-family-name
        []
-       ,(unpack hl-code))))
+       ,(unpack code))))
 
-(Ψ common {:grp1 {:fg :red2 :bg :bg0}
+(Ψ common {:grp1 {:fg :red2 :bg :bg0 :blend 99}
             :grp2 {:fg :red3 :bg :bg0}
             :grp3 {:fg :red4 :bg :bg0}
             :grp4 {:fg :red5 :bg :bg0}
