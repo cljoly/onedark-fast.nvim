@@ -37,7 +37,7 @@
   (let [map-val (?. map key)]
     (if (= map-val nil) true
         ((match constraint
-           "a boolean" #(or (= $1 true) (= $1 false))
+           "a boolean" #(-> (type $1) (= "boolean"))
            "between 0 and 100" #(<= 0 $1 100) _
            (assert #false "Unknown constraint")) map-val))))
 

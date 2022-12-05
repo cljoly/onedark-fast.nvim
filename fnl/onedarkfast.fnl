@@ -38,7 +38,7 @@
        ,(unpack code))))
 
 (Ψ common {:grp1 {:fg :red2 :bg :bg0 :blend 99}
-            :grp2 {:fg :red3 :bg :bg0}
+            :grp2 {:fg :red3 :bg :bg0 :italic true}
             :grp3 {:fg :red4 :bg :bg0}
             :grp4 {:fg :red5 :bg :bg0}
             :grp5 {:fg :red6 :bg :bg0}
