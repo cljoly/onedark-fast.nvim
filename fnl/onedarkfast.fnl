@@ -28,7 +28,8 @@
                (do
                  (each [_ hl-key (pairs [:fg :bg :sp])]
                    (-?>> (. hl-def hl-key)
-                         (color-defs.find-color)
+                         ;; TODO make the palette configurable
+                         (color-defs.find-color :dark)
                          (tset hl-def hl-key)))
                  (utils.check-hl-def hl-def)
                  `(vim.api.nvim_set_hl 0 ,hl-group ,hl-def)))]
@@ -37,12 +38,71 @@
        []
        ,(unpack code))))
 
-(Ψ common {:grp1 {:fg :red2 :bg :bg0 :blend 99}
-            :grp2 {:fg :red3 :bg :bg0 :italic true}
-            :grp3 {:fg :red4 :bg :bg0}
-            :grp4 {:fg :red5 :bg :bg0}
-            :grp5 {:fg :red6 :bg :bg0}
-            :grp6 {:fg :red7 :bg :bg0}})
+(Ψ common {;; TODO Put the transparent & ending_tildes support back?
+              :Normal {:fg :fg :bg :bg0}
+              :Terminal {:fg :fg :bg :bg0}
+              :EndOfBuffer {:fg :bg0 :bg :bg0}
+              :FoldColumn {:fg :fg :bg :bg1}
+              :Folded {:fg :fg :bg :bg1}
+              :SignColumn {:fg :fg :bg :bg0}
+              :ToolbarLine {:fg :fg}
+              :Cursor {:reverse true}
+              :vCursor {:reverse true}
+              :iCursor {:reverse true}
+              :lCursor {:reverse true}
+              :CursorIM {:reverse true}
+              :CursorColumn {:bg :bg1}
+              :CursorLine {:bg :bg1}
+              :ColorColumn {:bg :bg1}
+              :CursorLineNr {:fg :fg}
+              :LineNr {:fg :grey}
+              :Conceal {:fg :grey :bg :bg1}
+              :DiffAdd {:fg :none :bg :diff_add}
+              :DiffChange {:fg :none :bg :diff_change}
+              :DiffDelete {:fg :none :bg :diff_delete}
+              :DiffText {:fg :none :bg :diff_text}
+              ;; :DiffAdded colors.Green
+              ;; :DiffRemoved colors.Red
+              ;; :DiffFile colors.Cyan
+              ;; :DiffIndexLine colors.Grey
+              :Directory {:fg :blue}
+              :ErrorMsg {:fg :red :bold true}
+              :WarningMsg {:fg :yellow :bold true}
+              :MoreMsg {:fg :blue :bold true}
+              :IncSearch {:fg :bg0 :bg :orange}
+              :Search {:fg :bg0 :bg :bg_yellow}
+              :Substitute {:fg :bg0 :bg :green}
+              :MatchParen {:fg :none :bg :grey}
+              :NonText {:fg :grey}
+              :Whitespace {:fg :grey}
+              :SpecialKey {:fg :grey}
+              :Pmenu {:fg :fg :bg :bg1}
+              :PmenuSbar {:fg :none :bg :bg1}
+              :PmenuSel {:fg :bg0 :bg :bg_blue}
+              :WildMenu {:fg :bg0 :bg :blue}
+              :PmenuThumb {:fg :none :bg :grey}
+              :Question {:fg :yellow}
+              :SpellBad {:fg :red :underline true :sp :red}
+              :SpellCap {:fg :yellow :underline true :sp :yellow}
+              :SpellLocal {:fg :blue :underline true :sp :blue}
+              :SpellRare {:fg :purple :underline true :sp :purple}
+              :StatusLine {:fg :fg :bg :bg2}
+              :StatusLineTerm {:fg :fg :bg :bg2}
+              :StatusLineNC {:fg :grey :bg :bg1}
+              :StatusLineTermNC {:fg :grey :bg :bg1}
+              :TabLine {:fg :fg :bg :bg1}
+              :TabLineFill {:fg :grey :bg :bg1}
+              :TabLineSel {:fg :bg0 :bg :fg}
+              :VertSplit {:fg :bg3}
+              :Visual {:bg :bg3}
+              :VisualNOS {:fg :none :bg :bg2 :underline true}
+              :QuickFixLine {:fg :blue :underline true}
+              :Debug {:fg :yellow}
+              :debugPC {:fg :bg0 :bg :green}
+              :debugBreakpoint {:fg :bg0 :bg :red}
+              :ToolbarButton {:fg :bg0 :bg :bg_blue}
+              :FloatBorder {:fg :grey :bg :bg1}
+              :NormalFloat {:fg :fg :bg :bg1}})
 
 (macro unroll2 [hl-group]
   `(print ,hl-group 4))

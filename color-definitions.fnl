@@ -18,18 +18,19 @@
 ;; Module imported in Fennel, there should be no corresponding Lua module
 ;; emitted for this file
 
-(lambda find-color [color-name]
-  "Inline color values
-  TODO support variants"
-  (match color-name
-    :red2 "#AA222"
-    :red3 "#AA333"
-    :red4 "#AA444"
-    :red5 "#AA555"
-    :red6 "#AA666"
-    :red7 "#AA777"
-    :bg0 "#BB9999"
-    _ (assert-compile false (.. "Unknown color: " color-name))))
+(local palette (require :palette))
+
+(fn acceptable-color? [color]
+  (match color
+    :none color
+    :fg color
+    :bg color
+    _ false))
+
+(lambda find-color [palette-name color-name]
+  "Inline color values"
+  (or (?. palette palette-name color-name) (acceptable-color? color-name)
+      (assert-compile false (.. "Unknown color: " color-name) color-name)))
 
 {: find-color}
 
