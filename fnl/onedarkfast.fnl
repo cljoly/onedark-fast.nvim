@@ -15,7 +15,7 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(macro Ψ [hl-family-name hl-family]
+(macro family-function [hl-family-name hl-family]
   (local color-defs (require :color-definitions))
   (local utils (require :utils))
   ;; Basic checks
@@ -38,7 +38,7 @@
        []
        ,(unpack code))))
 
-(Ψ common {;; TODO Put the transparent & ending_tildes support back?
+(family-function common {;; TODO Put the transparent & ending_tildes support back?
               :Normal {:fg :fg :bg :bg0}
               :Terminal {:fg :fg :bg :bg0}
               :EndOfBuffer {:fg :bg0 :bg :bg0}
@@ -61,10 +61,10 @@
               :DiffChange {:fg :none :bg :diff_change}
               :DiffDelete {:fg :none :bg :diff_delete}
               :DiffText {:fg :none :bg :diff_text}
-              ;; :DiffAdded colors.Green
-              ;; :DiffRemoved colors.Red
-              ;; :DiffFile colors.Cyan
-              ;; :DiffIndexLine colors.Grey
+              :DiffAdded {:fg :green}
+              :DiffRemoved {:fg :red}
+              :DiffFile {:fg :cyan}
+              :DiffIndexLine {:fg :grey}
               :Directory {:fg :blue}
               :ErrorMsg {:fg :red :bold true}
               :WarningMsg {:fg :yellow :bold true}
@@ -110,7 +110,7 @@
 (fn colorscheme []
   (unroll2 common)
   (common)
-  (print :Hi))
+  (print :OnedarkLoaded))
 
 {: colorscheme}
 

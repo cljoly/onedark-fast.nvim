@@ -20,16 +20,17 @@
 
 (local palette (require :palette))
 
-(fn acceptable-color? [color]
+(fn acceptable-color [color]
+  "Return nil if the color is an acceptable bare color"
   (match color
     :none color
     :fg color
     :bg color
-    _ false))
+    _ nil))
 
 (lambda find-color [palette-name color-name]
   "Inline color values"
-  (or (?. palette palette-name color-name) (acceptable-color? color-name)
+  (or (?. palette palette-name color-name) (acceptable-color color-name)
       (assert-compile false (.. "Unknown color: " color-name) color-name)))
 
 {: find-color}

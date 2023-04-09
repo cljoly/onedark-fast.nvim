@@ -21,6 +21,10 @@ local function common()
   vim.api.nvim_set_hl(0, "DiffChange", {fg = "none", bg = "#1c3448"})
   vim.api.nvim_set_hl(0, "DiffDelete", {fg = "none", bg = "#382b2c"})
   vim.api.nvim_set_hl(0, "DiffText", {fg = "none", bg = "#2c5372"})
+  vim.api.nvim_set_hl(0, "DiffAdded", {fg = "#98c379"})
+  vim.api.nvim_set_hl(0, "DiffRemoved", {fg = "#e86671"})
+  vim.api.nvim_set_hl(0, "DiffFile", {fg = "#56b6c2"})
+  vim.api.nvim_set_hl(0, "DiffIndexLine", {fg = "#5c6370"})
   vim.api.nvim_set_hl(0, "Directory", {fg = "#61afef"})
   vim.api.nvim_set_hl(0, "ErrorMsg", {fg = "#e86671", bold = true})
   vim.api.nvim_set_hl(0, "WarningMsg", {fg = "#e5c07b", bold = true})
@@ -64,6 +68,6 @@ end
 local function colorscheme()
   print(common, 4)
   common()
-  return print("Hi")
+  return print("OnedarkLoaded")
 end
 return {colorscheme = colorscheme}
