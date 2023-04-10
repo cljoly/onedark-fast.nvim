@@ -15,7 +15,7 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(macro familiy-lambda [hl-family-name hl-family palette]
+(macro family-lambda [hl-family-name hl-family palette]
   (local color-defs (require :color-definitions))
   (local utils (require :utils))
   ;; Basic checks
@@ -39,7 +39,7 @@
 
 (macro μ [data]
   "μ stands for module.
-  Define the module for this whole file, listing families in functions and adding a function to call them all"
+  This macro defines the module for this whole file, listing families in functions and adding a function to call them all"
   (-> data (table?) (assert-compile "μ requires a table"))
   (let [{: palette : families} data]
     ;; Basic checks
@@ -52,7 +52,7 @@
                (local M#
                       ,(collect [hl-family-name hl-def (pairs families)]
                          (values hl-family-name
-                                 `(familiy-lambda hl-family-name# ,hl-def ,palette))))
+                                 `(family-lambda hl-family-name# ,hl-def ,palette))))
                ;; Then add the colorscheme function that calls every hl-family
                (tset M# :colorscheme
                      (lambda []
