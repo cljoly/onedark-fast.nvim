@@ -73,8 +73,8 @@ local function _1_(...)
   end
   M_3_auto = {common = _2_, other = _3_}
   local function _4_()
-    do local _ = (M_3_auto).common end
-    return (M_3_auto).other
+    do end (M_3_auto).common()
+    return (M_3_auto).other()
   end
   M_3_auto["colorscheme"] = _4_
   return M_3_auto

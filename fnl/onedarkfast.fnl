@@ -57,7 +57,7 @@
                (tset M# :colorscheme
                      (lambda []
                        ,(unpack (icollect [hl-family-name _ (pairs families)]
-                                  `(. M# ,hl-family-name)))))
+                                  `((. M# ,hl-family-name))))))
                M#))))
 
 (μ {:palette :dark
