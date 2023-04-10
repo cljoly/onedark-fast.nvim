@@ -15,7 +15,7 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(macro familiy-lambda [hl-family-name hl-family]
+(macro familiy-lambda [hl-family-name hl-family palette]
   (local color-defs (require :color-definitions))
   (local utils (require :utils))
   ;; Basic checks
@@ -29,7 +29,7 @@
                  (each [_ hl-key (pairs [:fg :bg :sp])]
                    (-?>> (. hl-def hl-key)
                          ;; TODO make the palette configurable
-                         (color-defs.find-color :dark)
+                         (color-defs.find-color palette)
                          (tset hl-def hl-key)))
                  (utils.check-hl-def hl-def)
                  `(vim.api.nvim_set_hl 0 ,hl-group ,hl-def)))]
@@ -52,7 +52,7 @@
                (local M#
                       ,(collect [hl-family-name hl-def (pairs families)]
                          (values hl-family-name
-                                 `(familiy-lambda hl-family-name# ,hl-def))))
+                                 `(familiy-lambda hl-family-name# ,hl-def ,palette))))
                ;; Then add the colorscheme function that calls every hl-family
                (tset M# :colorscheme
                      (lambda []
