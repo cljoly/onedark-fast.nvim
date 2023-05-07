@@ -68,6 +68,36 @@ local function _1_(...)
     return true
   end
   local function _3_()
+    vim.api.nvim_set_hl(0, "markdownBlockquote", {fg = "#5c6370"})
+    vim.api.nvim_set_hl(0, "markdownBold", {fg = "none", bold = true})
+    vim.api.nvim_set_hl(0, "markdownBoldDelimiter", {fg = "#5c6370"})
+    vim.api.nvim_set_hl(0, "markdownCode", {fg = "#98c379"})
+    vim.api.nvim_set_hl(0, "markdownCodeBlock", {fg = "#98c379"})
+    vim.api.nvim_set_hl(0, "markdownCodeDelimiter", {fg = "#e5c07b"})
+    vim.api.nvim_set_hl(0, "markdownH1", {fg = "#e86671", bold = true})
+    vim.api.nvim_set_hl(0, "markdownH2", {fg = "#c678dd", bold = true})
+    vim.api.nvim_set_hl(0, "markdownH3", {fg = "#d19a66", bold = true})
+    vim.api.nvim_set_hl(0, "markdownH4", {fg = "#e86671", bold = true})
+    vim.api.nvim_set_hl(0, "markdownH5", {fg = "#c678dd", bold = true})
+    vim.api.nvim_set_hl(0, "markdownH6", {fg = "#d19a66", bold = true})
+    vim.api.nvim_set_hl(0, "markdownHeadingDelimiter", {fg = "#5c6370"})
+    vim.api.nvim_set_hl(0, "markdownHeadingRule", {fg = "#5c6370"})
+    vim.api.nvim_set_hl(0, "markdownId", {fg = "#e5c07b"})
+    vim.api.nvim_set_hl(0, "markdownIdDeclaration", {fg = "#e86671"})
+    vim.api.nvim_set_hl(0, "markdownItalic", {fg = "none", italic = true})
+    vim.api.nvim_set_hl(0, "markdownItalicDelimiter", {fg = "#5c6370", italic = true})
+    vim.api.nvim_set_hl(0, "markdownLinkDelimiter", {fg = "#5c6370"})
+    vim.api.nvim_set_hl(0, "markdownLinkText", {fg = "#e86671"})
+    vim.api.nvim_set_hl(0, "markdownLinkTextDelimiter", {fg = "#5c6370"})
+    vim.api.nvim_set_hl(0, "markdownListMarker", {fg = "#e86671"})
+    vim.api.nvim_set_hl(0, "markdownOrderedListMarker", {fg = "#e86671"})
+    vim.api.nvim_set_hl(0, "markdownRule", {fg = "#c678dd"})
+    vim.api.nvim_set_hl(0, "markdownUrl", {fg = "#61afef", underline = true})
+    vim.api.nvim_set_hl(0, "markdownUrlDelimiter", {fg = "#5c6370"})
+    vim.api.nvim_set_hl(0, "markdownUrlTitleDelimiter", {fg = "#98c379"})
+    return true
+  end
+  local function _4_()
     vim.api.nvim_set_hl(0, "String", {fg = "#98c379"})
     vim.api.nvim_set_hl(0, "Character", {fg = "#d19a66"})
     vim.api.nvim_set_hl(0, "Number", {fg = "#d19a66"})
@@ -103,7 +133,7 @@ local function _1_(...)
     vim.api.nvim_set_hl(0, "Todo", {fg = "#e86671", italic = true})
     return true
   end
-  local function _4_()
+  local function _5_()
     vim.api.nvim_set_hl(0, "TelescopeBorder", {fg = "#e86671"})
     vim.api.nvim_set_hl(0, "TelescopePromptBorder", {fg = "#56b6c2"})
     vim.api.nvim_set_hl(0, "TelescopeResultsBorder", {fg = "#56b6c2"})
@@ -114,7 +144,7 @@ local function _1_(...)
     vim.api.nvim_set_hl(0, "TelescopeSelectionCaret", {fg = "#e5c07b"})
     return true
   end
-  local function _5_()
+  local function _6_()
     vim.api.nvim_set_hl(0, "TSAnnotation", {fg = "#abb2bf"})
     vim.api.nvim_set_hl(0, "TSAttribute", {fg = "#56b6c2"})
     vim.api.nvim_set_hl(0, "TSBoolean", {fg = "#d19a66"})
@@ -176,14 +206,15 @@ local function _1_(...)
     vim.api.nvim_set_hl(0, "TSVariableBuiltin", {fg = "#e86671"})
     return true
   end
-  M_3_auto = {common = _2_, syntax = _3_, telescope = _4_, treesitter = _5_}
-  local function _6_()
+  M_3_auto = {common = _2_, markdown = _3_, syntax = _4_, telescope = _5_, treesitter = _6_}
+  local function _7_()
     do end (M_3_auto).common()
     do end (M_3_auto).syntax()
     do end (M_3_auto).treesitter()
+    do end (M_3_auto).markdown()
     return (M_3_auto).telescope()
   end
-  M_3_auto["colorscheme"] = _6_
+  M_3_auto["colorscheme"] = _7_
   return M_3_auto
 end
 return _1_(...)

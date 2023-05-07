@@ -283,6 +283,34 @@
                              :TSVariable {:fg :fg}
                              :TSVariableBuiltin {:fg :red}}
                 ;; TODO Add LSP and the rest
+                ;; Languages
+                :markdown {:markdownBlockquote {:fg :grey}
+                           :markdownBold {:fg :none :bold true}
+                           :markdownBoldDelimiter {:fg :grey}
+                           :markdownCode {:fg :green}
+                           :markdownCodeBlock {:fg :green}
+                           :markdownCodeDelimiter {:fg :yellow}
+                           :markdownH1 {:fg :red :bold true}
+                           :markdownH2 {:fg :purple :bold true}
+                           :markdownH3 {:fg :orange :bold true}
+                           :markdownH4 {:fg :red :bold true}
+                           :markdownH5 {:fg :purple :bold true}
+                           :markdownH6 {:fg :orange :bold true}
+                           :markdownHeadingDelimiter {:fg :grey}
+                           :markdownHeadingRule {:fg :grey}
+                           :markdownId {:fg :yellow}
+                           :markdownIdDeclaration {:fg :red}
+                           :markdownItalic {:fg :none :italic true}
+                           :markdownItalicDelimiter {:fg :grey :italic true}
+                           :markdownLinkDelimiter {:fg :grey}
+                           :markdownLinkText {:fg :red}
+                           :markdownLinkTextDelimiter {:fg :grey}
+                           :markdownListMarker {:fg :red}
+                           :markdownOrderedListMarker {:fg :red}
+                           :markdownRule {:fg :purple}
+                           :markdownUrl {:fg :blue :underline true}
+                           :markdownUrlDelimiter {:fg :grey}
+                           :markdownUrlTitleDelimiter {:fg :green}}
                 ;; Plugins
                 :telescope {:TelescopeBorder {:fg :red}
                             :TelescopePromptBorder {:fg :cyan}
