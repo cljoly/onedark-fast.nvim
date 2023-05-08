@@ -35,16 +35,30 @@
 (fn perform-check [map key constraint]
   "Check for a particular constraint"
   (let [map-val (?. map key)]
-    (if (= map-val nil) true
+    (if (= map-val nil)
+        true
         ((match constraint
-           "a boolean" #(-> (type $1) (= "boolean"))
-           "between 0 and 100" #(<= 0 $1 100) _
-           (assert #false "Unknown constraint")) map-val))))
+           "a boolean" #(-> (type $1) (= :boolean))
+           "between 0 and 100" #(<= 0 $1 100)
+           _ (assert #false "Unknown constraint")) map-val))))
 
 (lambda check-hl-def [map]
   "Checks that the map follows the constraints given in `:help nvim_set_hl` for {vals}. Does not check for fg, bg, sp however."
   (each [key constraint (pairs hl-map-key-constraints)]
     (assert (perform-check map key constraint) (.. key " must be " constraint))))
 
-{: check-hl-def}
+(fn hex-parse [hex_string]
+  "Expects an hexadecimal number, starting with a # and acceptable to tonumber
+  once the # is removed. Returns nil when given nil"
+  (-?> hex_string (string.sub 2) (tonumber 16)))
 
+(lambda blend [fg bg α]
+  "Takes fg and bg as numbers, and blend them with α.
+  0 <= α <= 1, α == 1 => fg, α == 0 => bg"
+  (-?> (+ (* α fg) (* (- 1 α) bg)) ; TODO Correct for blue “overflowing” into green? (it’s not a problem as
+       ; long as bg == 0000, and in other cases)
+       (math.max 0)
+       (math.min 16777215) ; max 0xFFFFFF
+       (math.floor)))
+
+{: check-hl-def : hex-parse : blend }

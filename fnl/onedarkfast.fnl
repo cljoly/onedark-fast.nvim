@@ -15,6 +15,11 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+(macro darken [fg bg α]
+  (let [utils# (require :utils)
+        blended (utils#.blend (utils#.hex-parse fg) (or (utils#.hex-parse bg) 0) α)]
+    `(,blended)))
+
 (macro family-lambda [hl-family-name hl-family palette]
   (local color-defs (require :color-definitions))
   (local utils (require :utils))
