@@ -15,12 +15,6 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(macro darken [fg bg α]
-  (let [utils# (require :utils)
-        blended (utils#.blend (utils#.hex-parse fg)
-                              (or (utils#.hex-parse bg) 0) α)]
-    `(,blended)))
-
 (macro family-lambda [hl-family-name hl-family palette]
   (local color-defs (require :color-definitions))
   (local utils (require :utils))
@@ -288,7 +282,50 @@
                              :TSTypeBuiltin {:fg :orange}
                              :TSVariable {:fg :fg}
                              :TSVariableBuiltin {:fg :red}}
-                ;; TODO Add LSP and the rest
+                :lsp {:LspCxxHlGroupEnumConstant {:fg :orange}
+                      :LspCxxHlGroupMemberVariable {:fg :orange}
+                      :LspCxxHlGroupNamespace {:fg :blue}
+                      :LspCxxHlSkippedRegion {:fg :grey}
+                      :LspCxxHlSkippedRegionBeginEnd {:fg :red}
+                      ;;
+                      :DiagnosticError {:fg :red}
+                      :DiagnosticHint {:fg :purple}
+                      :DiagnosticInfo {:fg :cyan}
+                      :DiagnosticWarn {:fg :yellow}
+                      ;;
+                      :DiagnosticVirtualTextError {:bg :extra_dark_red
+                                                   :fg :dark_red}
+                      :DiagnosticVirtualTextWarn {:bg :extra_dark_yellow
+                                                  :fg :dark_yellow}
+                      :DiagnosticVirtualTextInfo {:bg :extra_dark_cyan
+                                                  :fg :dark_cyan}
+                      :DiagnosticVirtualTextHint {:bg :extra_dark_purple
+                                                  :fg :dark_purple}
+                      ;;
+                      :DiagnosticUnderlineError {:undercurl true :sp :red}
+                      :DiagnosticUnderlineHint {:undercurl true :sp :purple}
+                      :DiagnosticUnderlineInfo {:undercurl true :sp :blue}
+                      :DiagnosticUnderlineWarn {:undercurl true :sp :yellow}
+                      ;;
+                      :LspReferenceText {:bg :bg2}
+                      :LspReferenceWrite {:bg :bg2}
+                      :LspReferenceRead {:bg :bg2}
+                      ;;
+                      :LspCodeLens {:fg :grey :italic true}
+                      :LspCodeLensSeparator {:fg :grey}
+                      ;;
+                      :LspDiagnosticsDefaultError {:link :DiagnosticError}
+                      :LspDiagnosticsDefaultHint {:link :DiagnosticHint}
+                      :LspDiagnosticsDefaultInformation {:link :DiagnosticInfo}
+                      :LspDiagnosticsDefaultWarning {:link :DiagnosticWarn}
+                      :LspDiagnosticsUnderlineError {:link :DiagnosticUnderlineError}
+                      :LspDiagnosticsUnderlineHint {:link :DiagnosticUnderlineHint}
+                      :LspDiagnosticsUnderlineInformation {:link :DiagnosticUnderlineInfo}
+                      :LspDiagnosticsUnderlineWarning {:link :DiagnosticUnderlineWarn}
+                      :LspDiagnosticsVirtualTextError {:link :DiagnosticVirtualTextError}
+                      :LspDiagnosticsVirtualTextWarning {:link :DiagnosticVirtualTextWarn}
+                      :LspDiagnosticsVirtualTextInformation {:link :DiagnosticVirtualTextInfo}
+                      :LspDiagnosticsVirtualTextHint {:link :DiagnosticVirtualTextHint}}
                 ;; Languages
                 :markdown {:markdownBlockquote {:fg :grey}
                            :markdownBold {:fg :none :bold true}
