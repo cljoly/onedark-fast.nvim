@@ -1,6 +1,15 @@
 local function _1_(...)
   local M_3_auto
   local function _2_()
+    vim.api.nvim_set_hl(0, "CmpItemAbbr", {fg = "#abb2bf"})
+    vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", {fg = "#848b98", strikethrough = true})
+    vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", {fg = "#56b6c2"})
+    vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", {fg = "#56b6c2", underline = true})
+    vim.api.nvim_set_hl(0, "CmpItemMenu", {fg = "#848b98"})
+    vim.api.nvim_set_hl(0, "CmpItemKind", {fg = "#c678dd", reverse = false})
+    return true
+  end
+  local function _3_()
     vim.api.nvim_set_hl(0, "Normal", {fg = "#abb2bf", bg = "#282c34"})
     vim.api.nvim_set_hl(0, "Terminal", {fg = "#abb2bf", bg = "#282c34"})
     vim.api.nvim_set_hl(0, "EndOfBuffer", {fg = "#282c34", bg = "#282c34"})
@@ -67,7 +76,19 @@ local function _1_(...)
     vim.api.nvim_set_hl(0, "NormalFloat", {fg = "#abb2bf", bg = "#31353f"})
     return true
   end
-  local function _3_()
+  local function _4_()
+    vim.api.nvim_set_hl(0, "GitSignsAdd", {fg = "#98c379"})
+    vim.api.nvim_set_hl(0, "GitSignsAddLn", {fg = "#98c379"})
+    vim.api.nvim_set_hl(0, "GitSignsAddNr", {fg = "#98c379"})
+    vim.api.nvim_set_hl(0, "GitSignsChange", {fg = "#61afef"})
+    vim.api.nvim_set_hl(0, "GitSignsChangeLn", {fg = "#61afef"})
+    vim.api.nvim_set_hl(0, "GitSignsChangeNr", {fg = "#61afef"})
+    vim.api.nvim_set_hl(0, "GitSignsDelete", {fg = "#e86671"})
+    vim.api.nvim_set_hl(0, "GitSignsDeleteLn", {fg = "#e86671"})
+    vim.api.nvim_set_hl(0, "GitSignsDeleteNr", {fg = "#e86671"})
+    return true
+  end
+  local function _5_()
     vim.api.nvim_set_hl(0, "markdownBlockquote", {fg = "#5c6370"})
     vim.api.nvim_set_hl(0, "markdownBold", {fg = "none", bold = true})
     vim.api.nvim_set_hl(0, "markdownBoldDelimiter", {fg = "#5c6370"})
@@ -97,7 +118,7 @@ local function _1_(...)
     vim.api.nvim_set_hl(0, "markdownUrlTitleDelimiter", {fg = "#98c379"})
     return true
   end
-  local function _4_()
+  local function _6_()
     vim.api.nvim_set_hl(0, "String", {fg = "#98c379"})
     vim.api.nvim_set_hl(0, "Character", {fg = "#d19a66"})
     vim.api.nvim_set_hl(0, "Number", {fg = "#d19a66"})
@@ -133,7 +154,7 @@ local function _1_(...)
     vim.api.nvim_set_hl(0, "Todo", {fg = "#e86671", italic = true})
     return true
   end
-  local function _5_()
+  local function _7_()
     vim.api.nvim_set_hl(0, "TelescopeBorder", {fg = "#e86671"})
     vim.api.nvim_set_hl(0, "TelescopePromptBorder", {fg = "#56b6c2"})
     vim.api.nvim_set_hl(0, "TelescopeResultsBorder", {fg = "#56b6c2"})
@@ -144,7 +165,7 @@ local function _1_(...)
     vim.api.nvim_set_hl(0, "TelescopeSelectionCaret", {fg = "#e5c07b"})
     return true
   end
-  local function _6_()
+  local function _8_()
     vim.api.nvim_set_hl(0, "TSAnnotation", {fg = "#abb2bf"})
     vim.api.nvim_set_hl(0, "TSAttribute", {fg = "#56b6c2"})
     vim.api.nvim_set_hl(0, "TSBoolean", {fg = "#d19a66"})
@@ -206,15 +227,17 @@ local function _1_(...)
     vim.api.nvim_set_hl(0, "TSVariableBuiltin", {fg = "#e86671"})
     return true
   end
-  M_3_auto = {common = _2_, markdown = _3_, syntax = _4_, telescope = _5_, treesitter = _6_}
-  local function _7_()
+  M_3_auto = {cmp = _2_, common = _3_, gitsigns = _4_, markdown = _5_, syntax = _6_, telescope = _7_, treesitter = _8_}
+  local function _9_()
     do end (M_3_auto).common()
     do end (M_3_auto).syntax()
     do end (M_3_auto).treesitter()
     do end (M_3_auto).markdown()
+    do end (M_3_auto).cmp()
+    do end (M_3_auto).gitsigns()
     return (M_3_auto).telescope()
   end
-  M_3_auto["colorscheme"] = _7_
+  M_3_auto["colorscheme"] = _9_
   return M_3_auto
 end
 return _1_(...)

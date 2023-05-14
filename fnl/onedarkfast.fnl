@@ -17,7 +17,8 @@
 
 (macro darken [fg bg α]
   (let [utils# (require :utils)
-        blended (utils#.blend (utils#.hex-parse fg) (or (utils#.hex-parse bg) 0) α)]
+        blended (utils#.blend (utils#.hex-parse fg)
+                              (or (utils#.hex-parse bg) 0) α)]
     `(,blended)))
 
 (macro family-lambda [hl-family-name hl-family palette]
@@ -317,6 +318,22 @@
                            :markdownUrlDelimiter {:fg :grey}
                            :markdownUrlTitleDelimiter {:fg :green}}
                 ;; Plugins
+                :cmp {:CmpItemAbbr {:fg :fg}
+                      :CmpItemAbbrDeprecated {:fg :light_grey
+                                              :strikethrough true}
+                      :CmpItemAbbrMatch {:fg :cyan}
+                      :CmpItemAbbrMatchFuzzy {:fg :cyan :underline true}
+                      :CmpItemMenu {:fg :light_grey}
+                      :CmpItemKind {:fg :purple :reverse false}}
+                :gitsigns {:GitSignsAdd {:fg :green}
+                           :GitSignsAddLn {:fg :green}
+                           :GitSignsAddNr {:fg :green}
+                           :GitSignsChange {:fg :blue}
+                           :GitSignsChangeLn {:fg :blue}
+                           :GitSignsChangeNr {:fg :blue}
+                           :GitSignsDelete {:fg :red}
+                           :GitSignsDeleteLn {:fg :red}
+                           :GitSignsDeleteNr {:fg :red}}
                 :telescope {:TelescopeBorder {:fg :red}
                             :TelescopePromptBorder {:fg :cyan}
                             :TelescopeResultsBorder {:fg :cyan}
