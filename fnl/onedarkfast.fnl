@@ -361,7 +361,33 @@
                       :CmpItemAbbrMatch {:fg :cyan}
                       :CmpItemAbbrMatchFuzzy {:fg :cyan :underline true}
                       :CmpItemMenu {:fg :light_grey}
-                      :CmpItemKind {:fg :purple :reverse false}}
+                      :CmpItemKind {:fg :purple}
+                      :CmpItemKindDefault {:fg :purple}
+                      :CmpItemKindClass {:fg :yellow}
+                      :CmpItemKindColor {:fg :green}
+                      :CmpItemKindConstant {:fg :orange}
+                      :CmpItemKindConstructor {:fg :blue}
+                      :CmpItemKindEnum {:fg :purple}
+                      :CmpItemKindEnumMember {:fg :yellow}
+                      :CmpItemKindEvent {:fg :yellow}
+                      :CmpItemKindField {:fg :purple}
+                      :CmpItemKindFile {:fg :blue}
+                      :CmpItemKindFolder {:fg :orange}
+                      :CmpItemKindFunction {:fg :blue}
+                      :CmpItemKindInterface {:fg :green}
+                      :CmpItemKindKeyword {:fg :cyan}
+                      :CmpItemKindMethod {:fg :blue}
+                      :CmpItemKindModule {:fg :orange}
+                      :CmpItemKindOperator {:fg :red}
+                      :CmpItemKindProperty {:fg :cyan}
+                      :CmpItemKindReference {:fg :orange}
+                      :CmpItemKindSnippet {:fg :red}
+                      :CmpItemKindStruct {:fg :purple}
+                      :CmpItemKindText {:fg :light_grey}
+                      :CmpItemKindTypeParameter {:fg :red}
+                      :CmpItemKindUnit {:fg :green}
+                      :CmpItemKindValue {:fg :orange}
+                      :CmpItemKindVariable {:fg :purple}}
                 :gitsigns {:GitSignsAdd {:fg :green}
                            :GitSignsAddLn {:fg :green}
                            :GitSignsAddNr {:fg :green}
