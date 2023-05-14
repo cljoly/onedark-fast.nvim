@@ -19,16 +19,20 @@
   (local color-defs (require :color-definitions))
   (local utils (require :utils))
   ;; Basic checks
-  (-> hl-family-name (sym)
+  (-> hl-family-name (sym?)
       (assert-compile "Require a hl-family-name sym" hl-family-name))
   (assert-compile (and (table? hl-family) (not (sequence? hl-family)))
                   "Require a hl-family list" hl-family)
   ;; Build the list of highlight definitions
   (let [code (icollect [hl-group hl-def (pairs hl-family)]
                (do
+                 (assert-compile (-?> hl-group (type) (= :string))
+                                 "Require a string for hl-group" hl-group)
+                 (assert-compile (or (table? hl-def) (list? hl-def))
+                                 "Require a table or code list for hl-def"
+                                 hl-def)
                  (each [_ hl-key (pairs [:fg :bg :sp])]
                    (-?>> (. hl-def hl-key)
-                         ;; TODO make the palette configurable
                          (color-defs.find-color palette)
                          (tset hl-def hl-key)))
                  (utils.check-hl-def hl-def)

@@ -30,6 +30,10 @@
 
 (lambda find-color [palette-name color-name]
   "Inline color values"
+  (assert-compile (= (type palette-name) :string)
+                  "palette-name should be a string" palette-name)
+  (assert-compile (= (type palette-name) :string)
+                  "palette-name should be a string" palette-name)
   (or (?. palette palette-name color-name) (acceptable-color color-name)
       (assert-compile false (.. "Unknown color: " color-name) color-name)))
 
