@@ -52,13 +52,28 @@
   once the # is removed. Returns nil when given nil"
   (-?> hex_string (string.sub 2) (tonumber 16)))
 
-(lambda blend [fg bg α]
+(λ blend [fg bg α]
   "Takes fg and bg as numbers, and blend them with α.
   0 <= α <= 1, α == 1 => fg, α == 0 => bg"
-  (-?> (+ (* α fg) (* (- 1 α) bg)) ; TODO Correct for blue “overflowing” into green? (it’s not a problem as
-       ; long as bg == 0000, and in other cases)
-       (math.max 0)
-       (math.min 16777215) ; max 0xFFFFFF
-       (math.floor)))
+  (fn blend-one [fg-channel bg-channel]
+    "Blend just one rgb channel"
+    (-?> (+ (* α fg-channel) (* (- 1 α) bg-channel))
+         (math.max 0)
+         (math.min 255)
+         (+ 0.5) ; Will make floor round to the closest
+         (math.floor)))
 
-{: check-hl-def : hex-parse : blend }
+  (fn extract-rgb [color]
+    "Extract the 3 channel R, G and B from the color, expressed as a number"
+    (values (-> (band color 16711680) (rshift 16)) ; R
+            (-> (band color 65280) (rshift 8)) ; G
+            (band color 255) ; B
+            ))
+
+  (let [(fg-r fg-g fg-b) (extract-rgb fg)
+        (bg-r bg-g bg-b) (extract-rgb bg)]
+    (+ (blend-one fg-b bg-b α) (-> (blend-one fg-g bg-g α) (lshift 8))
+       (-> (blend-one fg-r bg-r α) (lshift 16)))))
+
+{: check-hl-def : hex-parse : blend}
+

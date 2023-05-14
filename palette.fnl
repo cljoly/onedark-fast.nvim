@@ -22,13 +22,13 @@
 
 (macro enrich [palettes]
   "For each dark_* colors, add an extra_dark_* color"
-  (lambda darken [fg ?bg α]
+  (λ darken [fg bg α]
     (let [utils# (require :utils)]
-      (utils#.blend (utils#.hex-parse fg) (or (utils#.hex-parse ?bg) 0) α)))
+      (utils#.blend (utils#.hex-parse fg) (utils#.hex-parse bg) α)))
   (each [_ palette (pairs palettes)]
-    (each [color hexa (pairs palette)]
+    (each [color hex (pairs palette)]
       (if (-> color (string.sub 1 5) (= :dark_))
-          (tset palette (.. :extra_ color) (darken hexa palette.bg0 0.1)))))
+          (tset palette (.. :extra_ color) (darken hex palette.bg0 0.1)))))
   `,palettes)
 
 (enrich {:dark {:black "#181a1f"
