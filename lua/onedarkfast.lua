@@ -100,6 +100,9 @@ local function _1_(...)
     vim.api.nvim_set_hl(0, "ToolbarButton", {fg = "#282c34", bg = "#73b8f1"})
     vim.api.nvim_set_hl(0, "FloatBorder", {fg = "#5c6370", bg = "#31353f"})
     vim.api.nvim_set_hl(0, "NormalFloat", {fg = "#abb2bf", bg = "#31353f"})
+    vim.api.nvim_set_hl(0, "WinSeparator", {link = "VertSplit"})
+    vim.api.nvim_set_hl(0, "WinBar", {link = "StatusLine"})
+    vim.api.nvim_set_hl(0, "WinBarNC", {link = "StatusLineNC"})
     return true
   end
   local function _4_()
@@ -292,14 +295,14 @@ local function _1_(...)
   end
   M_3_auto = {cmp = _2_, common = _3_, gitsigns = _4_, lsp = _5_, markdown = _6_, syntax = _7_, telescope = _8_, treesitter = _9_}
   local function _10_()
-    do end (M_3_auto).common()
-    do end (M_3_auto).syntax()
-    do end (M_3_auto).treesitter()
-    do end (M_3_auto).lsp()
-    do end (M_3_auto).markdown()
-    do end (M_3_auto).cmp()
-    do end (M_3_auto).gitsigns()
-    return (M_3_auto).telescope()
+    M_3_auto.common()
+    M_3_auto.syntax()
+    M_3_auto.treesitter()
+    M_3_auto.lsp()
+    M_3_auto.markdown()
+    M_3_auto.cmp()
+    M_3_auto.gitsigns()
+    return M_3_auto.telescope()
   end
   M_3_auto["colorscheme"] = _10_
   return M_3_auto

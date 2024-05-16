@@ -129,7 +129,10 @@
                          :debugBreakpoint {:fg :bg0 :bg :red}
                          :ToolbarButton {:fg :bg0 :bg :bg_blue}
                          :FloatBorder {:fg :grey :bg :bg1}
-                         :NormalFloat {:fg :fg :bg :bg1}}
+                         :NormalFloat {:fg :fg :bg :bg1}
+                         :WinSeparator {:link :VertSplit}
+                         :WinBar {:link :StatusLine}
+                         :WinBarNC {:link :StatusLineNC}}
                 :syntax {:String {:fg :green}
                          :Character {:fg :orange}
                          :Number {:fg :orange}
