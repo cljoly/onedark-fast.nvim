@@ -4,7 +4,7 @@ out_files = $(fnl_files:fnl/%.fnl=lua/%.lua) colors/onedarkfast.lua
 all: $(out_files)
 
 fmt: $(fnl_files)
-	fnlfmt --fix $<
+	./fnlfmt --fix $<
 
 lua/%.lua: fnl/%.fnl lua/
 	fennel --raw-errors --globals-only vim,print --compile $< > $@
