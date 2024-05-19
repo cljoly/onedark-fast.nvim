@@ -227,7 +227,11 @@
                              :TSTypeBuiltin {:fg :orange}
                              :TSVariable {:fg :fg}
                              "@variable" {:link :Identifier}
-                             :TSVariableBuiltin {:fg :red}}
+                             :TSVariableBuiltin {:fg :red}
+                             "@text.uri" {:fg :cyan :underline true}
+                             "@text.todo" {:fg :red :italic true}
+                             "@text.todo.unchecked" {:fg :red :italic true}
+                             "@text.todo.checked" {:fg :green :italic true}}
                 :lsp {:LspCxxHlGroupEnumConstant {:fg :orange}
                       :LspCxxHlGroupMemberVariable {:fg :orange}
                       :LspCxxHlGroupNamespace {:fg :blue}

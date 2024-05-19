@@ -92,6 +92,7 @@ local function _1_(...)
     vim.api.nvim_set_hl(0, "TabLineFill", {fg = "#5c6370", bg = "#31353f"})
     vim.api.nvim_set_hl(0, "TabLineSel", {fg = "#282c34", bg = "#abb2bf"})
     vim.api.nvim_set_hl(0, "WinSeparator", {link = "VertSplit"})
+    vim.api.nvim_set_hl(0, "VertSplit", {fg = "#3b3f4c"})
     vim.api.nvim_set_hl(0, "Visual", {bg = "#3b3f4c"})
     vim.api.nvim_set_hl(0, "VisualNOS", {fg = "none", bg = "#393f4a", underline = true})
     vim.api.nvim_set_hl(0, "QuickFixLine", {fg = "#61afef", underline = true})
@@ -304,6 +305,10 @@ local function _1_(...)
     vim.api.nvim_set_hl(0, "TSVariable", {fg = "#abb2bf"})
     vim.api.nvim_set_hl(0, "@variable", {link = "Identifier"})
     vim.api.nvim_set_hl(0, "TSVariableBuiltin", {fg = "#e86671"})
+    vim.api.nvim_set_hl(0, "@text.uri", {fg = "#56b6c2", underline = true})
+    vim.api.nvim_set_hl(0, "@text.todo", {fg = "#e86671", italic = true})
+    vim.api.nvim_set_hl(0, "@text.todo.unchecked", {fg = "#e86671", italic = true})
+    vim.api.nvim_set_hl(0, "@text.todo.checked", {fg = "#98c379", italic = true})
     return true
   end
   M_3_auto = {cmp = _2_, common = _3_, gitsigns = _4_, lsp = _5_, markdown = _6_, syntax = _7_, telescope = _8_, treesitter = _9_}
