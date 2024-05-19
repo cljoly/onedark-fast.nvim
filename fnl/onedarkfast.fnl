@@ -121,7 +121,8 @@
                          :TabLine {:fg :fg :bg :bg1}
                          :TabLineFill {:fg :grey :bg :bg1}
                          :TabLineSel {:fg :bg0 :bg :fg}
-                         :VertSplit {:fg :bg3}
+                         :WinSeparator {:fg :bg3}
+                         :VertSplit {:fg :bg3} ; Deprecated but still used in some configs
                          :Visual {:bg :bg3}
                          :VisualNOS {:fg :none :bg :bg2 :underline true}
                          :QuickFixLine {:fg :blue :underline true}
@@ -279,11 +280,23 @@
                            :markdownCodeBlock {:fg :green}
                            :markdownCodeDelimiter {:fg :yellow}
                            :markdownH1 {:fg :red :bold true}
+                           "@markup.heading.1.markdown" {:fg :red :bold true}
+                           "@markup.heading.1.marker.markdown" {:fg :red :bold true}
                            :markdownH2 {:fg :purple :bold true}
+                           "@markup.heading.2.markdown" {:fg :purple :bold true}
+                           "@markup.heading.2.marker.markdown" {:fg :purple :bold true}
                            :markdownH3 {:fg :orange :bold true}
+                           "@markup.heading.3.markdown"  {:fg :orange :bold true}
+                           "@markup.heading.3.marker.markdown"  {:fg :orange :bold true}
                            :markdownH4 {:fg :red :bold true}
+                           "@markup.heading.4.markdown"  {:fg :red :bold true}
+                           "@markup.heading.4.marker.markdown"  {:fg :red :bold true}
                            :markdownH5 {:fg :purple :bold true}
+                           "@markup.heading.5.markdown"   {:fg :purple :bold true}
+                           "@markup.heading.5.marker.markdown"   {:fg :purple :bold true}
                            :markdownH6 {:fg :orange :bold true}
+                           "@markup.heading.6.markdown"   {:fg :orange :bold true}
+                           "@markup.heading.6.marker.markdown"   {:fg :orange :bold true}
                            :markdownHeadingDelimiter {:fg :grey}
                            :markdownHeadingRule {:fg :grey}
                            :markdownId {:fg :yellow}

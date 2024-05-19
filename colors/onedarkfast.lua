@@ -1,1 +1,1 @@
-return (require("onedarkfast")).colorscheme()
+return require("onedarkfast").colorscheme()
