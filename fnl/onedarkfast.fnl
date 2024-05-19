@@ -96,6 +96,7 @@
                          :ErrorMsg {:fg :red :bold true}
                          :WarningMsg {:fg :yellow :bold true}
                          :MoreMsg {:fg :blue :bold true}
+                         :ModeMsg {:fg :green}
                          :IncSearch {:fg :bg0 :bg :orange}
                          :Search {:fg :bg0 :bg :bg_yellow}
                          :Substitute {:fg :bg0 :bg :green}
@@ -224,6 +225,7 @@
                              :TSType {:fg :yellow}
                              :TSTypeBuiltin {:fg :orange}
                              :TSVariable {:fg :fg}
+                             "@variable" {:link :Identifier}
                              :TSVariableBuiltin {:fg :red}}
                 :lsp {:LspCxxHlGroupEnumConstant {:fg :orange}
                       :LspCxxHlGroupMemberVariable {:fg :orange}
